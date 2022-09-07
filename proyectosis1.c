@@ -13,17 +13,6 @@
 char historial[10][MAX_LINE];
 int argCount = 0;
 
-// Agraga los comandos ingresados al arreglo historial que es manejado como una pila
-void add_historial(char *string){
-	
-	for (int i = 9; i > 0; --i){
-
-    	strcpy(historial[i], historial[i - 1]);
-    }  
-
-	strcpy(historial[0], string);
-	++argCount;
-}
 
 // Organiza los comandos ingresados separados para facilitar la revision de la correctitud de los comandos escritos
 // mete los comando en una lista de strings
@@ -56,6 +45,20 @@ bool purgarInput(char *string, char **aux){
 		return true;
 	}
 }
+
+
+// Agraga los comandos ingresados al arreglo historial que es manejado como una pila
+void add_historial(char *string){
+	
+	for (int i = 9; i > 0; --i){
+
+    	strcpy(historial[i], historial[i - 1]);
+    }  
+
+	strcpy(historial[0], string);
+	++argCount;
+}
+
 
 // Muestra el historial de comandos 
 void mostrar_historial(){
@@ -199,6 +202,6 @@ int main(void){
 			wait(NULL);
         }
 	}
-    
+
 	return 0;
 }
