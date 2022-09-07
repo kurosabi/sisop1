@@ -154,6 +154,7 @@ int main(void){
 
 		// Crea un proceso hijo 
 		pid_t child_pid;
+        int status;
 		child_pid = fork();
 
 		// para salir del programa
@@ -182,7 +183,7 @@ int main(void){
 
 		// si no encuentra el ampersand el proceso padre espera al proceso hijo para continuar la ejecucion.
 		if(ultimoAmpersand == false)
-			wait(NULL);
+			waitpid(child_pid, &status, WNOHANG);
 	}
 	return 0;
 }
