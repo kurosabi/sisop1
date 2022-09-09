@@ -194,7 +194,7 @@ int main(void){
 			printf("\n");
 			execvp(args[0], args);
 			fprintf (stderr,"\nCommand not recognised.\n");
-			exit(0);
+			abort();
 		}
 
 		// si no encuentra el ampersand el proceso padre espera al proceso hijo para continuar la ejecucion.
